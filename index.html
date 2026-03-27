@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERLEN Vertriebsagentur</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+
+body{background:#000;color:#fff;overflow-x:hidden;}
+
+/* HEADER */
+header{
+position:fixed;
+top:0;
+width:100%;
+padding:10px;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(8px);
+display:flex;
+justify-content:center;
+z-index:1000;
+}
+header img{height:60px;}
+
+/* HERO VIDEO */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+z-index:-1;
+}
+
+.hero h1{font-size:42px;margin-bottom:20px;}
+.hero p{opacity:0.8;margin-bottom:30px;max-width:600px;}
+
+.btn{
+padding:16px 45px;
+background:#fff;
+color:#000;
+font-weight:bold;
+border:none;
+cursor:pointer;
+border-radius:8px;
+transition:all 0.3s ease;
+box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 30px rgba(255,255,255,0.6);
+}
+
+/* SECTIONS */
+section{
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
+text-align:center;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+margin-top:40px;
+}
+
+.grid h2{
+font-size:48px;
+text-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+
+/* CARDS */
+.card{
+border:1px solid rgba(255,255,255,0.1);
+padding:30px;
+transition:0.3s;
+}
+.card:hover{
+transform:translateY(-10px);
+border-color:#fff;
+}
+
+/* FORM */
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:400px;
+margin:0 auto;
+}
+input{
+padding:15px;
+border:none;
+border-radius:5px;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+/* ANIMATION */
+.hidden{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.grid{grid-template-columns:1fr;}
+.hero h1{font-size:28px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.png">
+</header>
+
+<section class="hero">
+
+<video autoplay muted loop>
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+
+<div>
+<h1>Verdiene Geld im Vertrieb.<br> Nicht mit Zeit.</h1>
+<p>Baue dir ein Einkommen auf, das von deiner Leistung abhängt.</p>
+<button class="btn" onclick="scrollToForm()">Jetzt in 60 sek. bewerben</button>
+</div>
+
+</section>
+
+<section class="hidden">
+<div class="grid">
+<div><h2 id="count1">0</h2><p>Neukunden</p></div>
+<div><h2 id="count2">0</h2><p>Vertriebspartner</p></div>
+<div><h2 id="count3">0</h2><p>Projekte</p></div>
+</div>
+</section>
+
+<section class="hidden">
+<h2>Hier entscheidet Leistung</h2>
+<p>Kein Chef. Keine Limits. Kein Bullshit.</p>
+<p>Wenn du lieferst, verdienst du. Punkt.</p>
+</section>
+
+<section class="hidden">
+<div class="grid">
+<div class="card">Klare Prozesse</div>
+<div class="card">Training</div>
+<div class="card">Performance Tracking</div>
+</div>
+</section>
+
+<section class="hidden">
+<h2>Du hast zwei Optionen:</h2>
+<p>Weiter durchschnittlich bleiben…</p>
+<p>oder anfangen Geld im Vertrieb zu verdienen.</p>
+<button class="btn" onclick="scrollToForm()">Jetzt in 60 sek. bewerben</button>
+</section>
+
+<section id="form" class="hidden">
+<h2>Jetzt in 60 Sekunden bewerben</h2>
+
+<form onsubmit="submitForm(event)">
+<input type="text" placeholder="Vollständiger Name" required>
+<input type="text" placeholder="Telefonnummer" required>
+<input type="email" placeholder="Email Adresse" required>
+<button class="btn">Termin sichern</button>
+</form>
+
+</section>
+
+<div class="whatsapp" onclick="openWhatsApp()">💬</div>
+
+<script>
+// Scroll
+function scrollToForm(){
+document.getElementById("form").scrollIntoView({behavior:"smooth"});
+}
+
+// WhatsApp
+function openWhatsApp(){
+window.open("https://wa.me/49123456789","_blank");
+}
+
+// Animation
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
+
+// Counter
+function animate(id,target){
+let count=0;
+let el=document.getElementById(id);
+let i=setInterval(()=>{
+count+=Math.ceil(target/50);
+if(count>=target){count=target;clearInterval(i);}
+el.innerText=count+"+";
+},30);
+}
+window.onload=()=>{
+animate("count1",5000);
+animate("count2",20);
+animate("count3",100);
+}
+
+// Form
+function submitForm(e){
+e.preventDefault();
+window.location.href="https://calendly.com/";
+}
+</script>
+
+</body>
+</html>
