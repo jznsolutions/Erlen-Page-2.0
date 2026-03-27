@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ERLEN Vertriebsagentur</title>
+h1, h2{
+letter-spacing:1px;
+}
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
@@ -20,7 +23,7 @@ position:fixed;
 top:0;
 width:100%;
 padding:5px;
-background:rgba(0,0,0,0.5);
+background:rgba(11,15,26,0.7);
 backdrop-filter:blur(8px);
 display:flex;
 justify-content:center;
@@ -37,7 +40,7 @@ text-align:center;
 padding:20px;
 
 background:
-linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9)),
+linear-gradient(to bottom, rgba(11,15,26,0.4), rgba(11,15,26,0.95))
 url('bg.jpg') center/cover no-repeat;
 }
 
@@ -55,18 +58,19 @@ z-index:-1;
 
 .btn{
 padding:16px 45px;
-background:#fff;
-color:#000;
+background:#1E2A47;
+color:#fff;
 font-weight:bold;
 border:none;
 cursor:pointer;
 border-radius:8px;
 transition:all 0.3s ease;
-box-shadow:0 0 20px rgba(255,255,255,0.2);
+box-shadow:0 0 20px rgba(30,42,71,0.5);
 }
+
 .btn:hover{
 transform:scale(1.08);
-box-shadow:0 0 30px rgba(255,255,255,0.6);
+box-shadow:0 0 30px rgba(30,42,71,0.8);
 }
 
 /* SECTIONS */
@@ -92,7 +96,7 @@ text-shadow:0 0 20px rgba(255,255,255,0.4);
 
 /* CARDS */
 .card{
-border:1px solid rgba(255,255,255,0.1);
+border:1px solid rgba(30,42,71,0.5);
 padding:30px;
 transition:0.3s;
 }
